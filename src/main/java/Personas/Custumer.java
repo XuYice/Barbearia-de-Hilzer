@@ -4,16 +4,21 @@ package Personas;
  *
  * @author joilson
  */
-public class Custumer {
+public class Custumer extends Thread {
 
     boolean payment;
 
-    public Custumer() {
+    public Custumer(String threadName) {
+        super(threadName);
     }
     
     public void Leave(){
     }
     
     public void ConfirmPayment(){
+    }
+
+    public void run() {
+        
     }
 }
