@@ -2,7 +2,7 @@ package Personas;
 
 /**
  *
- * @author joils
+ * @author joilson
  */
 public class Custumer {
 
