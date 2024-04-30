@@ -20,6 +20,7 @@ public class Chair {
     }
     
     public void Use(){
+        
     }
     
     public void GetUp(){

@@ -26,6 +26,7 @@ public class Barber extends Thread {
 
         while (Working) {
 			try {
+                
 				int sleepTime;
 
 				do {
