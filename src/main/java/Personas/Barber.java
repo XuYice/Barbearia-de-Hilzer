@@ -23,6 +23,23 @@ public class Barber extends Thread {
     }
 
     public void run() {
+
+        while (Working) {
+			try {
+				int sleepTime;
+
+				do {
+					sleepTime = ((int) (Math.random() * 5000));
+				} while (sleepTime < 1000);
+
+				Thread.sleep(sleepTime);
+
+                /* Executar ação */
+
+
+			} catch (Exception e) {
+			}
+		}
         
     }
 }
