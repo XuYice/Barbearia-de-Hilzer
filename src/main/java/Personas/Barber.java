@@ -45,22 +45,20 @@ public class Barber extends Thread {
     public void run() {
 
         while (Working || RecivingPayment) {
-			try {
-                
-				int sleepTime;
+            try {
 
-				do {
-					sleepTime = ((int) (Math.random() * 5000));
-				} while (sleepTime < 1000);
+                int sleepTime;
 
-				Thread.sleep(sleepTime);
+                do {
+                    sleepTime = ((int) (Math.random() * 5000));
+                } while (sleepTime < 1000);
+
+                Thread.sleep(sleepTime);
 
                 /* Executar a��o */
+            } catch (Exception e) {
+            }
+        }
 
-
-			} catch (Exception e) {
-			}
-		}
-        
     }
 }

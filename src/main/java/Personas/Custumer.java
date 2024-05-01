@@ -4,18 +4,17 @@ public class Custumer extends Thread {
 
     boolean payment;
 
-
     public Custumer(String threadName) {
         super(threadName);
     }
-    
-    public void Leave(){
+
+    public void Leave() {
     }
-    
-    public void ConfirmPayment(Custumer c){
-        if (!c.getPayment()) {      
+
+    public void ConfirmPayment(Custumer c) {
+        if (!c.getPayment()) {
             c.setPayment(true);
-            
+
             /*  System.out.println(); para sinalizar pagamento*/
         }
     }
@@ -29,6 +28,6 @@ public class Custumer extends Thread {
     }
 
     public void run() {
-        
+
     }
 }
