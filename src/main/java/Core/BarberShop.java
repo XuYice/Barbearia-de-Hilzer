@@ -58,7 +58,23 @@ public class BarberShop {
     public void Relocate(){
     }
     
-    public void Payment(){
+    public synchronized void Payment(BarberShop bS, Barber b, Custumer c){
+
+        /* Talvez migrar para dentro da tread do Barber */
+        if (bS.getPOS() && b.getSleeping()) {
+            bS.setPOS(false);
+            b.setRecivingPayment(true);
+
+            c.ConfirmPayment(c);
+            b.setRecivingPayment(false);
+            bS.setPOS(true);
+
+            System.out.println("OK payment");
+            
+        }else{
+            System.out.println("POS not available");
+        }
+
     }
     
     public void Verify(){

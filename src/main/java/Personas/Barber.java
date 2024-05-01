@@ -14,6 +14,30 @@ public class Barber extends Thread {
         super(threadName);
     }
 
+    public boolean getWorking() {
+        return Working;
+    }
+
+    public void setWorking(boolean working) {
+        Working = working;
+    }
+
+    public boolean getSleeping() {
+        return Sleeping;
+    }
+
+    public void setSleeping(boolean sleeping) {
+        Sleeping = sleeping;
+    }
+
+    public boolean getRecivingPayment() {
+        return RecivingPayment;
+    }
+
+    public void setRecivingPayment(boolean recivingPayment) {
+        RecivingPayment = recivingPayment;
+    }
+
     public boolean GetStatus() {
         return true;
     }
@@ -24,7 +48,7 @@ public class Barber extends Thread {
 
     public void run() {
 
-        while (Working) {
+        while (Working || RecivingPayment) {
 			try {
                 
 				int sleepTime;
