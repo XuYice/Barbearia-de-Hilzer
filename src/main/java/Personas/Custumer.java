@@ -1,9 +1,5 @@
 package Personas;
 
-/**
- *
- * @author joilson
- */
 public class Custumer extends Thread {
 
     boolean payment;

@@ -1,9 +1,5 @@
 package Personas;
 
-/**
- *
- * @author joilson
- */
 public class Barber extends Thread {
 
     boolean Working;
@@ -59,7 +55,7 @@ public class Barber extends Thread {
 
 				Thread.sleep(sleepTime);
 
-                /* Executar ação */
+                /* Executar aï¿½ï¿½o */
 
 
 			} catch (Exception e) {
