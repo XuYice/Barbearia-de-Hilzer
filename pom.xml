@@ -9,6 +9,5 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <exec.mainClass>br.feevale.feevale.processamentoparalelo.threads.v1.FeevaleProcessamentoParaleloThreadsV1</exec.mainClass>
     </properties>
 </project>
