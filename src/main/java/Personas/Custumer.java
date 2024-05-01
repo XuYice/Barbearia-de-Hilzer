@@ -31,6 +31,4 @@ public class Custumer extends Thread {
     public void run() {
         
     }
-
-    
 }
