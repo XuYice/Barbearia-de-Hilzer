@@ -6,16 +6,6 @@ import Resources.Chair;
 import Resources.Sofa;
 import java.util.ArrayList;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
-
-
-/**
- *
- * @author joils
- */
 public class BarberShop {
     Sofa sofa;
     ArrayList<Chair> chairList;
