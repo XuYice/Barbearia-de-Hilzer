@@ -7,14 +7,17 @@ import java.util.ArrayList;
 public class Main {
 
 
-    public Custumer generateClient(){
+    public Custumer generateClient(String n,BarberShop b){
 
-        Custumer newCustumer = new Custumer(null, b);
+        Custumer newCustumer = new Custumer(n, b);
         System.out.println("New custumer has arrive");     
         return newCustumer;     
     }
 
      public static void main(String[] args) {
+
+        int maxClients = 50;
+        int clients = 0;
 
         BarberShop bS = new BarberShop();
         ArrayList<Barber> barberList = new ArrayList<Barber>();
@@ -36,7 +39,9 @@ public class Main {
         Chair c2 = new Chair();
         chairList.add(c2);
 
-
+        while (clients <= maxClients) {
+            
+        }
 
         System.out.println("Hello World!");
     }
