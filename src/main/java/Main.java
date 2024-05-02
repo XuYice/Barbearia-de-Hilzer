@@ -8,7 +8,7 @@ public class Main {
     private static final Object lock = new Object();
 
 
-    public Custumer generateClient(String n,BarberShop b){
+    public static Custumer generateClient(String n,BarberShop b){
 
         Custumer newCustumer = new Custumer(n, b);
         return newCustumer;     
