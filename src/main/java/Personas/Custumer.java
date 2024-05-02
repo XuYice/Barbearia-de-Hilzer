@@ -6,10 +6,15 @@ public class Custumer extends Thread {
 
     boolean payment;
     BarberShop bS;
+    boolean exit;
 
     public Custumer(String threadName, BarberShop b) {
         super(threadName);
         this.bS = b;
+    }
+
+    public void setExit(boolean exit) {
+        this.exit = exit;
     }
 
     public void Leave() {
@@ -19,7 +24,9 @@ public class Custumer extends Thread {
 
         if (bS.avaliableSpace()) {
             
-        }else{}
+        }else{
+
+        }
             
         
     }
@@ -42,6 +49,8 @@ public class Custumer extends Thread {
 
 
     public void run() {
-
+        while (!exit) {
+            
+        }
     }
 }
