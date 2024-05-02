@@ -40,6 +40,11 @@ public class Main {
         chairList.add(c2);
 
         while (clients <= maxClients) {
+
+            b0.start();
+            b1.start();
+            b2.start();
+
             
         }
 
