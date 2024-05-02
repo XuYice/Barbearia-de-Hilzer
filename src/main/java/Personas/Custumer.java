@@ -23,10 +23,10 @@ public class Custumer extends Thread {
     public void Arrive() {
 
         if (bS.avaliableSpace()) {
-
-        } else {
             bS.enter(this);
             System.out.println("New custumer has arrive");
+        } else {
+            System.out.println("No space avaliable, custumer leaves");
             setExit(true);
         }
     }
