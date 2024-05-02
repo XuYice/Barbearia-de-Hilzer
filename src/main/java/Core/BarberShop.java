@@ -2,13 +2,12 @@ package Core;
 
 import Personas.Barber;
 import Personas.Custumer;
-import Resources.Chair;
 import Resources.Sofa;
 import java.util.ArrayList;
 
 public class BarberShop {
     Sofa sofa = new Sofa();
-    ArrayList<Chair> chairList;
+    ArrayList<Custumer> chairList;
     ArrayList<Barber> barberList;
     ArrayList<Custumer> custumerList;
     public static boolean POS;
@@ -35,11 +34,11 @@ public class BarberShop {
         return cl.size() + sofa.custumerList.size() + chairList.size();
     }
 
-    public ArrayList<Chair> getChairList() {
+    public ArrayList<Custumer> getChairList() {
         return chairList;
     }
 
-    public void setChairList(ArrayList<Chair> chairList) {
+    public void setChairList(ArrayList<Custumer> chairList) {
         this.chairList = chairList;
     }
 
@@ -67,7 +66,7 @@ public class BarberShop {
         POS = pOS;
     }
 
-    public void Relocate(){
+    public synchronized void Relocate(){
         sofa.custumerList.trimToSize();
         
         while((sofa.custumerList.size() < 4) && (!custumerList.isEmpty())){
