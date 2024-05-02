@@ -11,7 +11,7 @@ public class BarberShop {
     ArrayList<Chair> chairList;
     ArrayList<Barber> barberList;
     ArrayList<Custumer> custumerList;
-    boolean POS;
+    public static boolean POS;
     int maxTotalSeats = 20;
 
     public int getMaxTotalSeats() {
@@ -42,11 +42,11 @@ public class BarberShop {
         this.custumerList = custumerList;
     }
 
-    public boolean getPOS() {
+    public static boolean getPOS() {
         return POS;
     }
 
-    public void setPOS(boolean pOS) {
+    public static void setPOS(boolean pOS) {
         POS = pOS;
     }
 
@@ -61,16 +61,16 @@ public class BarberShop {
         }
     }
     
-    public synchronized void Payment(BarberShop bS, Barber b, Custumer c){
+    public synchronized void Payment(Barber b, Custumer c){
 
         /* Talvez migrar para dentro da tread do Barber */
-        if (bS.getPOS() && b.getSleeping()) {
-            bS.setPOS(false);
+        if (this.getPOS() && b.getSleeping()) {
+            this.setPOS(false);
             b.setRecivingPayment(true);
 
             c.ConfirmPayment(c);
             b.setRecivingPayment(false);
-            bS.setPOS(true);
+            this.setPOS(true);
 
             System.out.println("OK payment");
             
