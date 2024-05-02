@@ -18,7 +18,7 @@ public class Custumer extends Thread {
     }
 
     public void Leave() {
-        this.interrupt();
+        setExit(true);
     }
 
     public void Arrive() {
