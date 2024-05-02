@@ -54,6 +54,7 @@ public class Main {
             
             try {newCustumer.join();} catch (InterruptedException e) {e.printStackTrace();}
                             clients++;
+                            System.out.println(clients);
             }   
         }
 
