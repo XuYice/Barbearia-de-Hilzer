@@ -111,6 +111,7 @@ public class BarberShop {
     public synchronized void NextCustumer(Barber b) {
         getChairList().add(sofa.custumerList.get(0));
         sofa.custumerList.remove(0);
+        Relocate();
     }
 
     public void Verify() {

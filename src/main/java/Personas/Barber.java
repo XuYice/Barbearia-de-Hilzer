@@ -58,6 +58,7 @@ public class Barber extends Thread {
         } else if (getRecivingPayment() == true) {
             bS.POS = false;
             setWorking(true);
+            bS.NextCustumer(this);
         }
     }
 
