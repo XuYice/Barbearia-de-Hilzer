@@ -45,7 +45,7 @@ public class Main {
         b1.start();
         b2.start();
         
-        System.out.println("Clientes:" + clients);
+
         
         synchronized (lock) {
             while (clients <= maxClients) {
