@@ -50,6 +50,7 @@ public class Barber extends Thread {
         } else if ((getSleeping() == true) && (BarberShop.POS == false)) {
             BarberShop.POS = true;
             setRecivingPayment(true);
+            BarberShop.Payment(this);
         } else if ((getSleeping() == true) && (BarberShop.POS == true)) {
             setSleeping(true);
         } else if (getRecivingPayment() == true) {

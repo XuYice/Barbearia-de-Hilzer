@@ -6,9 +6,9 @@ import Resources.Sofa;
 import java.util.ArrayList;
 
 public class BarberShop {
-    Sofa sofa = new Sofa();
-    ArrayList<Custumer> chairList;
-    ArrayList<Barber> barberList;
+    static Sofa sofa = new Sofa();
+    static ArrayList<Custumer> chairList;
+    static ArrayList<Barber> barberList;
     ArrayList<Custumer> custumerList;
     public static boolean POS;
     int maxTotalSeats = 20;
@@ -34,15 +34,15 @@ public class BarberShop {
         return cl.size() + sofa.custumerList.size() + chairList.size();
     }
 
-    public ArrayList<Custumer> getChairList() {
+    public static ArrayList<Custumer> getChairList() {
         synchronized(chairList){
             return chairList;
         }         
     }
 
-    public void setChairList(ArrayList<Custumer> chairList) {
+    public static void setChairList(ArrayList<Custumer> chairList) {
         synchronized(chairList){
-            this.chairList = chairList;
+            BarberShop.chairList = chairList;
         }    
     }
 
@@ -101,22 +101,16 @@ public class BarberShop {
         
     }
     
-    public synchronized void Payment(Barber b, Custumer c){
-
-        /*/* Talvez migrar para dentro da tread do Barber 
-        if (this.getPOS() && b.getSleeping()) {
-            this.setPOS(false);
-            b.setRecivingPayment(true);
-
-            c.ConfirmPayment(c);
-            b.setRecivingPayment(false);
-            this.setPOS(true);
-
-            System.out.println("OK payment");
-        }else{
-            System.out.println("POS not available");
-        }*/
-
+    public static synchronized void Payment(Barber b){
+        Custumer c = getChairList().get(0);
+        getChairList().remove(0);
+        
+        c.Leave();
+    }
+    
+    public static synchronized void NextCustumer(Barber b){
+        getChairList().add(sofa.custumerList.get(0));
+        sofa.custumerList.remove(0);
     }
     
     public void Verify(){

@@ -18,6 +18,7 @@ public class Custumer extends Thread {
     }
 
     public void Leave() {
+        this.interrupt();
     }
 
     public void Arrive() {
