@@ -4,8 +4,8 @@ import Personas.Custumer;
 import java.util.ArrayList;
 
 public class Sofa {
-    boolean status;
-    ArrayList<Custumer> custumerList;
+    public boolean status;
+    public ArrayList<Custumer> custumerList;
 
     public Sofa() {
     }

@@ -46,6 +46,14 @@ public class BarberShop {
     }
 
     public void Relocate(){
+        sofa.custumerList.trimToSize();
+        
+        while((sofa.custumerList.size() < 4) && (!custumerList.isEmpty())){
+            sofa.custumerList.add(custumerList.get(0));
+            custumerList.remove(0);
+            
+            custumerList.trimToSize();
+        }
     }
     
     public synchronized void Payment(BarberShop bS, Barber b, Custumer c){
