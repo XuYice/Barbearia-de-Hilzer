@@ -1,7 +1,6 @@
 package Personas;
 
 import Core.BarberShop;
-import java.util.Random;
 
 public class Barber extends Thread {
 

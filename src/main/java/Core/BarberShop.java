@@ -84,7 +84,7 @@ public class BarberShop {
     
     public synchronized void Payment(Barber b, Custumer c){
 
-        /* Talvez migrar para dentro da tread do Barber */
+        /*/* Talvez migrar para dentro da tread do Barber 
         if (this.getPOS() && b.getSleeping()) {
             this.setPOS(false);
             b.setRecivingPayment(true);
@@ -97,7 +97,7 @@ public class BarberShop {
             
         }else{
             System.out.println("POS not available");
-        }
+        }*/
 
     }
     
