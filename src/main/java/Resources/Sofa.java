@@ -9,6 +9,7 @@ public class Sofa {
     public ArrayList<Custumer> custumerList;
 
     public Sofa() {
+        this.custumerList = new ArrayList<Custumer>();
     }
 
     public void Use() {

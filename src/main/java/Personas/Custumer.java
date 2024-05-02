@@ -24,6 +24,7 @@ public class Custumer extends Thread {
 
         if (bS.avaliableSpace()) {
             bS.enter(this);
+            bS.Relocate();
             System.out.println("New custumer has arrive");
         } else {
             System.out.println("No space avaliable, custumer leaves");

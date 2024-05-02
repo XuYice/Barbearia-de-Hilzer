@@ -7,7 +7,7 @@ import Resources.Sofa;
 import java.util.ArrayList;
 
 public class BarberShop {
-    Sofa sofa;
+    Sofa sofa = new Sofa();
     ArrayList<Chair> chairList;
     ArrayList<Barber> barberList;
     ArrayList<Custumer> custumerList;
@@ -75,6 +75,8 @@ public class BarberShop {
             
             custumerList.trimToSize();
         }
+        
+        System.out.println("Sofa: " + sofa.custumerList.size() + "| Espera em pé: " + custumerList.size());
     }
 
     public synchronized void enter(Custumer c){
