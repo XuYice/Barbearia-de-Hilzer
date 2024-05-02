@@ -113,6 +113,13 @@ public class BarberShop {
         sofa.custumerList.remove(0);
         Relocate();
     }
+    
+    public synchronized void CutHair(Barber b, Custumer c){
+        b.setWorking(true);
+        b.ChangeStatus();
+        System.out.println("Barbeiro " + b.getName() + " corta cabelo de " + c.getName());
+          
+    }
 
     public void Verify() {
     }
