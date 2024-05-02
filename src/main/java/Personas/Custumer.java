@@ -25,7 +25,7 @@ public class Custumer extends Thread {
         if (bS.avaliableSpace()) {
             
         }else{
-
+            setExit(true);
         }
             
         
