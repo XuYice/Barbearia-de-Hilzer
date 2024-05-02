@@ -63,10 +63,7 @@ public class Custumer extends Thread {
                 } catch (Exception e) {
                 }
                 
-
                 Arrive();
-
-                /* Executar a��o */
         }
     }
 }
