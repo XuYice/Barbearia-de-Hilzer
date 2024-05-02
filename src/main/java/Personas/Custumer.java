@@ -1,10 +1,12 @@
 package Personas;
 
+import Core.BarberShop;
+
 public class Custumer extends Thread {
 
     boolean payment;
 
-    public Custumer(String threadName) {
+    public Custumer(String threadName, BarberShop b) {
         super(threadName);
     }
 
