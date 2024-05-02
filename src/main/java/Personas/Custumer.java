@@ -16,6 +16,11 @@ public class Custumer extends Thread {
     }
 
     public void Arrive(){
+
+        if (bS.avaliableSpace()) {
+            
+        }else{}
+            
         
     }
     
