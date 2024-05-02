@@ -76,10 +76,14 @@ public class BarberShop {
             custumerList.trimToSize();
         }
     }
+
+    public synchronized void enter(Custumer c){
+        custumerList.add(c);
+    }
     
     public synchronized void Payment(Barber b, Custumer c){
 
-        /* Talvez migrar para dentro da tread do Barber */
+        /*/* Talvez migrar para dentro da tread do Barber 
         if (this.getPOS() && b.getSleeping()) {
             this.setPOS(false);
             b.setRecivingPayment(true);
@@ -91,7 +95,7 @@ public class BarberShop {
             System.out.println("OK payment");
         }else{
             System.out.println("POS not available");
-        }
+        }*/
 
     }
     

@@ -25,10 +25,9 @@ public class Custumer extends Thread {
         if (bS.avaliableSpace()) {
 
         } else {
-            System.out.println("No space avaliable, custumer leaves");
-            setExit(true);
+            bS.enter(this);
+            System.out.println("New custumer has arrive");  
         }
-
     }
 
     public void ConfirmPayment(Custumer c) {
@@ -49,7 +48,25 @@ public class Custumer extends Thread {
 
     public void run() {
         while (!exit) {
+<<<<<<< HEAD
 
+=======
+                int sleepTime;
+
+                do {
+                    sleepTime = ((int) (Math.random() * 3000));
+                } while (sleepTime < 1000);
+
+                try {
+                    super.sleep(sleepTime);
+                } catch (Exception e) {
+                }
+                
+
+                Arrive();
+
+                /* Executar a��o */
+>>>>>>> edb2b61dbf965cad7ad8d72aa41bca2e5c14a671
         }
     }
 }
