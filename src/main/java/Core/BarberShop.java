@@ -11,7 +11,7 @@ public class BarberShop {
     ArrayList<Chair> chairList;
     ArrayList<Barber> barberList;
     ArrayList<Custumer> custumerList;
-    public static synchronized boolean POS;
+    public static boolean POS;
     int maxTotalSeats = 20;
 
 
