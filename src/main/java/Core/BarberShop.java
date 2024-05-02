@@ -12,6 +12,11 @@ public class BarberShop {
     ArrayList<Barber> barberList;
     ArrayList<Custumer> custumerList;
     boolean POS;
+    int maxTotalSeats = 20;
+
+    public int getMaxTotalSeats() {
+        return maxTotalSeats;
+    }
 
     public ArrayList<Chair> getChairList() {
         return chairList;

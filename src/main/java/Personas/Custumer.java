@@ -15,6 +15,10 @@ public class Custumer extends Thread {
     public void Leave() {
     }
 
+    public void Arrive(){
+        
+    }
+    
     public void ConfirmPayment(Custumer c) {
         if (!c.getPayment()) {
             c.setPayment(true);
@@ -30,6 +34,7 @@ public class Custumer extends Thread {
     public void setPayment(boolean payment) {
         this.payment = payment;
     }
+
 
     public void run() {
 
