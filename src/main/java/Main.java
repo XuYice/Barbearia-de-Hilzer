@@ -1,19 +1,20 @@
+
 import Core.BarberShop;
 import Personas.Barber;
 import Personas.Custumer;
 import java.util.ArrayList;
 
 public class Main {
+
     private static final Object lock = new Object();
 
-
-    public static Custumer generateClient(String n,BarberShop b){
+    public static Custumer generateClient(String n, BarberShop b) {
 
         Custumer newCustumer = new Custumer(n, b);
-        return newCustumer;     
+        return newCustumer;
     }
 
-     public static void main(String[] args) {
+    public static void main(String[] args) {
 
         int maxClients = 10;
         int clients = 0;
@@ -26,25 +27,29 @@ public class Main {
         ArrayList<Custumer> custumerList = new ArrayList<Custumer>();
         bS.setCustumerList(custumerList);
 
-        Barber b0 = new Barber("thBarber0",bS);
+        Barber b0 = new Barber("thBarber0", bS);
         barberList.add(b0);
-        Barber b1 = new Barber("thBarber1",bS);
+        Barber b1 = new Barber("thBarber1", bS);
         barberList.add(b1);
-        Barber b2 = new Barber("thBarber2",bS);
+        Barber b2 = new Barber("thBarber2", bS);
         barberList.add(b2);
 
         b0.start();
         b1.start();
         b2.start();
-              
+
         synchronized (lock) {
             while (clients <= maxClients) {
                 Custumer newCustumer = generateClient(Integer.toString(clients), bS);
                 newCustumer.start();
-                
-                try {newCustumer.join();} catch (InterruptedException e) {e.printStackTrace();}
+
+                try {
+                    newCustumer.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 clients++;
-            }   
+            }
         }
 
         b0.setExit(true);

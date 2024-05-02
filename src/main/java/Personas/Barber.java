@@ -45,18 +45,18 @@ public class Barber extends Thread {
 
     public void ChangeStatus() {
 
-        if ((getWorking() == true) && (BarberShop.POS == false)) {
+        if ((getWorking() == true) && (bS.POS == false)) {
             setRecivingPayment(true);
-        } else if ((getWorking() == true) && (BarberShop.POS == true)) {
+        } else if ((getWorking() == true) && (bS.POS == true)) {
             setSleeping(true);
-        } else if ((getSleeping() == true) && (BarberShop.POS == false)) {
-            BarberShop.POS = true;
+        } else if ((getSleeping() == true) && (bS.POS == false)) {
+            bS.POS = true;
             setRecivingPayment(true);
-            BarberShop.Payment(this);
-        } else if ((getSleeping() == true) && (BarberShop.POS == true)) {
+            bS.Payment(this);
+        } else if ((getSleeping() == true) && (bS.POS == true)) {
             setSleeping(true);
         } else if (getRecivingPayment() == true) {
-            BarberShop.POS = false;
+            bS.POS = false;
             setWorking(true);
         }
     }
@@ -64,30 +64,30 @@ public class Barber extends Thread {
     public void run() {
         while (!exit) {
 
-            if(bS.getTotalCustumers() > 0){
+            if (bS.getTotalCustumers() > 0) {
 
                 while (Working || RecivingPayment) {
                     try {
-    
+
                         int sleepTime;
-    
+
                         do {
                             sleepTime = ((int) (Math.random() * 2000));
                         } while (sleepTime < 1000);
-    
+
                         Thread.sleep(sleepTime);
-    
-                        
+
                     } catch (Exception e) {
                     }
                 }
 
-            }else{
-                System.out.println(super.getName()+ " esta dormindo");
-                try{Thread.sleep(1000);}catch(Exception e){};
+            } else {
+                System.out.println(super.getName() + " esta dormindo");
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception e) {
+                };
             }
-
         }
-
     }
 }
