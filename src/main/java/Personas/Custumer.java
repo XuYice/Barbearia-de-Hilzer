@@ -25,6 +25,7 @@ public class Custumer extends Thread {
         if (bS.avaliableSpace()) {
             
         }else{
+            System.out.println("No space avaliable, custumer leaves");
             setExit(true);
         }
             
