@@ -45,17 +45,18 @@ public class Main {
         b1.start();
         b2.start();
         
+        System.out.println("Clientes:" + clients);
+        
         synchronized (lock) {
             while (clients <= maxClients) {
 
-            
             Custumer newCustumer = generateClient(Integer.toString(clients), bS);
+            System.out.println(clients);
             newCustumer.start();
             
             try {newCustumer.join();} catch (InterruptedException e) {e.printStackTrace();}
-                            clients++;
-                            System.out.println(clients);
-            }   
+                            clients++;  
+            }
         }
 
         b0.setExit(true);

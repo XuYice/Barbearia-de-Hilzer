@@ -27,13 +27,14 @@ public class Custumer extends Thread {
         } else {
             bS.enter(this);
             System.out.println("New custumer has arrive");
+            setExit(true);
         }
     }
 
     public void ConfirmPayment(Custumer c) {
         if (!c.getPayment()) {
             c.setPayment(true);
-
+            this.payment = payment;
             /*  System.out.println(); para sinalizar pagamento*/
         }
     }
