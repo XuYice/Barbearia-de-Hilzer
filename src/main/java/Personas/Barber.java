@@ -48,10 +48,12 @@ public class Barber extends Thread {
         } else if ((getWorking() == true) && (BarberShop.POS == true)) {
             setSleeping(true);
         } else if ((getSleeping() == true) && (BarberShop.POS == false)) {
+            BarberShop.POS = true;
             setRecivingPayment(true);
         } else if ((getSleeping() == true) && (BarberShop.POS == true)) {
             setSleeping(true);
         } else if (getRecivingPayment() == true) {
+            BarberShop.POS = false;
             setWorking(true);
         }
     }
