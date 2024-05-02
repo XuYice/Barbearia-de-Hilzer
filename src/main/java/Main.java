@@ -26,19 +26,17 @@ public class Main {
         ArrayList<Custumer> custumerList = new ArrayList<Custumer>();
         bS.setCustumerList(custumerList);
 
-        Barber b0 = new Barber("thBarber0");
+        Barber b0 = new Barber("thBarber0",bS);
         barberList.add(b0);
-        Barber b1 = new Barber("thBarber1");
+        Barber b1 = new Barber("thBarber1",bS);
         barberList.add(b1);
-        Barber b2 = new Barber("thBarber2");
+        Barber b2 = new Barber("thBarber2",bS);
         barberList.add(b2);
 
         b0.start();
         b1.start();
         b2.start();
-        
-
-        
+              
         synchronized (lock) {
             while (clients <= maxClients) {
                 Custumer newCustumer = generateClient(Integer.toString(clients), bS);

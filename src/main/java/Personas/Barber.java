@@ -4,13 +4,15 @@ import Core.BarberShop;
 
 public class Barber extends Thread {
 
+    BarberShop bS;
     boolean Working;
     boolean Sleeping;
     boolean RecivingPayment;
     boolean exit;
 
-    public Barber(String threadName) {
+    public Barber(String threadName, BarberShop b) {
         super(threadName);
+        bS = b;
     }
 
     public void setExit(boolean exit) {
@@ -61,21 +63,30 @@ public class Barber extends Thread {
 
     public void run() {
         while (!exit) {
-            while (Working || RecivingPayment) {
-                try {
 
-                    int sleepTime;
+            if(bS.getTotalCustumers() > 0){
 
-                    do {
-                        sleepTime = ((int) (Math.random() * 5000));
-                    } while (sleepTime < 1000);
-
-                    Thread.sleep(sleepTime);
-
-                    /* Executar a��o */
-                } catch (Exception e) {
+                while (Working || RecivingPayment) {
+                    try {
+    
+                        int sleepTime;
+    
+                        do {
+                            sleepTime = ((int) (Math.random() * 2000));
+                        } while (sleepTime < 1000);
+    
+                        Thread.sleep(sleepTime);
+    
+                        
+                    } catch (Exception e) {
+                    }
                 }
+
+            }else{
+                System.out.println(super.getName()+ " esta dormindo");
+                try{Thread.sleep(1000);}catch(Exception e){};
             }
+
         }
 
     }
