@@ -49,12 +49,11 @@ public class Main {
             while (clients <= maxClients) {
 
             
-            Custumer newCustumer = generateClient(Integer.toString(clients), bS);
-            newCustumer.start();
-            
-            try {newCustumer.join();} catch (InterruptedException e) {e.printStackTrace();}
-                            clients++;
-                            System.out.println(clients);
+                Custumer newCustumer = generateClient(Integer.toString(clients), bS);
+                newCustumer.start();
+                
+                try {newCustumer.join();} catch (InterruptedException e) {e.printStackTrace();}
+                clients++;
             }   
         }
 
