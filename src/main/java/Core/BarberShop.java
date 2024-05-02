@@ -30,8 +30,9 @@ public class BarberShop {
     }
 
     public synchronized int getTotalCustumers(){
-        ArrayList<Custumer> cl = getCustumerList();     
-        return cl.size();
+        ArrayList<Custumer> cl = getCustumerList(); 
+        
+        return cl.size() + sofa.custumerList.size() + chairList.size();
     }
 
     public ArrayList<Chair> getChairList() {
@@ -76,7 +77,7 @@ public class BarberShop {
             custumerList.trimToSize();
         }
         
-        System.out.println("Sofa: " + sofa.custumerList.size() + "| Espera em pe: " + custumerList.size());
+        System.out.println("Cadeiras: " + chairList.size() + " Sofa: " + sofa.custumerList.size() + "| Espera em pe: " + custumerList.size());
     }
 
     public synchronized void enter(Custumer c){
