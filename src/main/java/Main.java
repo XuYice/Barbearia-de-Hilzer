@@ -41,11 +41,11 @@ public class Main {
 
         while (clients <= maxClients) {
 
-            b0.start();
-            b1.start();
-            b2.start();
+            //b0.start();
+            //b1.start();
+            //b2.start();
 
-            
+            clients++;
         }
 
         System.out.println("Hello World!");
