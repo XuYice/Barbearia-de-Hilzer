@@ -5,9 +5,11 @@ import Core.BarberShop;
 public class Custumer extends Thread {
 
     boolean payment;
+    BarberShop bS;
 
     public Custumer(String threadName, BarberShop b) {
         super(threadName);
+        this.bS = b;
     }
 
     public void Leave() {

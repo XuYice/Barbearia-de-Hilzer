@@ -10,7 +10,7 @@ public class Main {
     public Custumer generateClient(String n,BarberShop b){
 
         Custumer newCustumer = new Custumer(n, b);
-        System.out.println("New custumer has arrive");     
+        System.out.println("New custumer has arrive");  
         return newCustumer;     
     }
 
@@ -44,8 +44,6 @@ public class Main {
         b2.start();
 
         while (clients <= maxClients) {
-
-
 
             clients++;
         }
