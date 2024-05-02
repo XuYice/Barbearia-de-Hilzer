@@ -20,18 +20,17 @@ public class Custumer extends Thread {
     public void Leave() {
     }
 
-    public void Arrive(){
+    public void Arrive() {
 
         if (bS.avaliableSpace()) {
-            
-        }else{
+
+        } else {
             System.out.println("No space avaliable, custumer leaves");
             setExit(true);
         }
-            
-        
+
     }
-    
+
     public void ConfirmPayment(Custumer c) {
         if (!c.getPayment()) {
             c.setPayment(true);
@@ -48,10 +47,9 @@ public class Custumer extends Thread {
         this.payment = payment;
     }
 
-
     public void run() {
         while (!exit) {
-            
+
         }
     }
 }
