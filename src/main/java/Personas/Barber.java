@@ -50,15 +50,15 @@ public class Barber extends Thread {
             setSleeping(true);
         } else if ((getSleeping() == true) && (BarberShop.POS == false)) {
             setRecivingPayment(true);
-        } else if ((getSleeping() == true) && (BarberShop.POS == true)){
+        } else if ((getSleeping() == true) && (BarberShop.POS == true)) {
             setSleeping(true);
-        } else if (getRecivingPayment() == true){
+        } else if (getRecivingPayment() == true) {
             setWorking(true);
         }
     }
 
     public void run() {
-        while(!exit){
+        while (!exit) {
             while (Working || RecivingPayment) {
                 try {
 
@@ -74,7 +74,7 @@ public class Barber extends Thread {
                 } catch (Exception e) {
                 }
             }
-    }
+        }
 
     }
 }

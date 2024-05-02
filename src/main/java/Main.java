@@ -5,7 +5,7 @@ import Resources.Chair;
 import java.util.ArrayList;
 
 public class Main {
-
+    private static final Object lock = new Object();
 
     public Custumer generateClient(String n,BarberShop b){
 
@@ -42,12 +42,13 @@ public class Main {
         b0.start();
         b1.start();
         b2.start();
-
-        while (clients <= maxClients) {
-
-            clients++;
+        
+        synchronized (lock) {
+            while (clients <= maxClients) {
+                clients++;
+            }   
         }
-
+        
         System.out.println("Hello World!");
     }
 }
