@@ -25,9 +25,9 @@ public class Custumer extends Thread {
         if (bS.avaliableSpace()) {
             bS.enter(this);
             bS.Relocate();
-            System.out.println("New custumer has arrive");
+            System.out.println("Novo cliente chegou");
         } else {
-            System.out.println("No space avaliable, custumer leaves");
+            System.out.println("Sem espaco disponivel, cliente nao entra");
             setExit(true);
         }
     }
@@ -35,7 +35,6 @@ public class Custumer extends Thread {
     public void ConfirmPayment(Custumer c) {
         if (!c.getPayment()) {
             c.setPayment(true);
-            this.payment = payment;
             /*  System.out.println(); para sinalizar pagamento*/
         }
     }
