@@ -1,5 +1,8 @@
 package Personas;
 
+import Core.BarberShop;
+import java.util.Random;
+
 public class Barber extends Thread {
 
     boolean Working;
@@ -39,16 +42,23 @@ public class Barber extends Thread {
         RecivingPayment = recivingPayment;
     }
 
-    public boolean GetStatus() {
-        return true;
-    }
+    public void ChangeStatus() {
 
-    public boolean SetStatus() {
-        return true;
+        if ((getWorking() == true) && (BarberShop.POS == false)) {
+            setRecivingPayment(true);
+        } else if ((getWorking() == true) && (BarberShop.POS == true)) {
+            setSleeping(true);
+        } else if ((getSleeping() == true) && (BarberShop.POS == false)) {
+            setRecivingPayment(true);
+        } else if ((getSleeping() == true) && (BarberShop.POS == true)) {
+            setSleeping(true);
+        } else if (getRecivingPayment() == true) {
+            setWorking(true);
+        }
     }
 
     public void run() {
-        while(!exit){
+        while (!exit) {
             while (Working || RecivingPayment) {
                 try {
 
@@ -64,7 +74,7 @@ public class Barber extends Thread {
                 } catch (Exception e) {
                 }
             }
-    }
+        }
 
     }
 }
