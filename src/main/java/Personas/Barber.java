@@ -23,7 +23,7 @@ public class Barber extends Thread {
         return Working;
     }
 
-    public void setWorking(boolean working) {
+    public synchronized void setWorking(boolean working) {
         this.Working = working;
     }
 
@@ -31,19 +31,19 @@ public class Barber extends Thread {
         return Sleeping;
     }
 
-    public void setSleeping(boolean sleeping) {
+    public synchronized void setSleeping(boolean sleeping) {
         Sleeping = sleeping;
     }
 
-    public boolean getRecivingPayment() {
+    public synchronized boolean getRecivingPayment() {
         return RecivingPayment;
     }
 
-    public void setRecivingPayment(boolean recivingPayment) {
+    public synchronized void setRecivingPayment(boolean recivingPayment) {
         RecivingPayment = recivingPayment;
     }
 
-    public void ChangeStatus() {
+    public synchronized void ChangeStatus() {
 
         if ((getWorking() == true) && (bS.POS == false)) {
             setRecivingPayment(true);
@@ -64,11 +64,14 @@ public class Barber extends Thread {
 
     public void run() {
         while (!exit) {
-
-            if (bS.getTotalCustumers() > 0) {
+            
+            if (bS.getTotalCustumers() - bS.getChairList().size() > 0 && bS.getChairList().size() < 3) {
                 setSleeping(false);
+                
                 System.out.println(super.getName() + " acordou");
-
+                
+                bS.CutHair(this, bS.NextCustumer(this));            
+                
                 while (Working || RecivingPayment) {
                     try {
 

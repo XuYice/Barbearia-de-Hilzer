@@ -108,10 +108,13 @@ public class BarberShop {
         c.Leave();
     }
 
-    public synchronized void NextCustumer(Barber b) {
+    public synchronized Custumer NextCustumer(Barber b) {
+        Custumer c = sofa.custumerList.get(0);  
         getChairList().add(sofa.custumerList.get(0));
         sofa.custumerList.remove(0);
         Relocate();
+        
+        return c;
     }
     
     public synchronized void CutHair(Barber b, Custumer c){
