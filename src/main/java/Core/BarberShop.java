@@ -14,8 +14,25 @@ public class BarberShop {
     public static boolean POS;
     int maxTotalSeats = 20;
 
+
+    public synchronized boolean avaliableSpace(){
+        int size = getTotalCustumers();
+
+        if (size < getMaxTotalSeats()) {
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+
     public int getMaxTotalSeats() {
         return maxTotalSeats;
+    }
+
+    public synchronized int getTotalCustumers(){
+        ArrayList<Custumer> cl = getCustumerList();     
+        return cl.size();
     }
 
     public ArrayList<Chair> getChairList() {

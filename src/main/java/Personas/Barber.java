@@ -8,9 +8,14 @@ public class Barber extends Thread {
     boolean Working;
     boolean Sleeping;
     boolean RecivingPayment;
+    boolean exit;
 
     public Barber(String threadName) {
         super(threadName);
+    }
+
+    public void setExit(boolean exit) {
+        this.exit = exit;
     }
 
     public boolean getWorking() {
@@ -53,22 +58,23 @@ public class Barber extends Thread {
     }
 
     public void run() {
+        while(!exit){
+            while (Working || RecivingPayment) {
+                try {
 
-        while (Working || RecivingPayment) {
-            try {
+                    int sleepTime;
 
-                int sleepTime;
+                    do {
+                        sleepTime = ((int) (Math.random() * 5000));
+                    } while (sleepTime < 1000);
 
-                do {
-                    sleepTime = ((int) (Math.random() * 5000));
-                } while (sleepTime < 1000);
+                    Thread.sleep(sleepTime);
 
-                Thread.sleep(sleepTime);
-
-                /* Executar a��o */
-            } catch (Exception e) {
+                    /* Executar a��o */
+                } catch (Exception e) {
+                }
             }
-        }
+    }
 
     }
 }
