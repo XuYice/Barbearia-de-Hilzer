@@ -76,7 +76,7 @@ public class BarberShop {
             custumerList.trimToSize();
         }
         
-        System.out.println("Sofa: " + sofa.custumerList.size() + "| Espera em pé: " + custumerList.size());
+        System.out.println("Sofa: " + sofa.custumerList.size() + "| Espera em pe: " + custumerList.size());
     }
 
     public synchronized void enter(Custumer c){
