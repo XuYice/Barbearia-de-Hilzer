@@ -24,7 +24,7 @@ public class Barber extends Thread {
     }
 
     public void setWorking(boolean working) {
-        Working = working;
+        this.Working = working;
     }
 
     public boolean getSleeping() {
@@ -66,6 +66,8 @@ public class Barber extends Thread {
         while (!exit) {
 
             if (bS.getTotalCustumers() > 0) {
+                setSleeping(false);
+                System.out.println(super.getName() + " acordou");
 
                 while (Working || RecivingPayment) {
                     try {
@@ -85,6 +87,7 @@ public class Barber extends Thread {
             } else {
                 System.out.println(super.getName() + " esta dormindo");
                 try {
+                    setSleeping(true);
                     Thread.sleep(1000);
                 } catch (Exception e) {
                 };
