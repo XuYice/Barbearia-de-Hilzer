@@ -39,11 +39,13 @@ public class Main {
         Chair c2 = new Chair();
         chairList.add(c2);
 
+        b0.start();
+        b1.start();
+        b2.start();
+
         while (clients <= maxClients) {
 
-            //b0.start();
-            //b1.start();
-            //b2.start();
+
 
             clients++;
         }
