@@ -69,6 +69,10 @@ public class BarberShop {
 
     public void Relocate(){
     }
+
+    public synchronized void enter(Custumer c){
+        custumerList.add(c);
+    }
     
     public synchronized void Payment(BarberShop bS, Barber b, Custumer c){
 

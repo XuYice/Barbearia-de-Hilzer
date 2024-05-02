@@ -23,7 +23,8 @@ public class Custumer extends Thread {
     public void Arrive(){
 
         if (bS.avaliableSpace()) {
-            
+            bS.enter(this);
+            System.out.println("New custumer has arrive");  
         }else{
             System.out.println("No space avaliable, custumer leaves");
             setExit(true);
@@ -51,7 +52,21 @@ public class Custumer extends Thread {
 
     public void run() {
         while (!exit) {
-            
+                int sleepTime;
+
+                do {
+                    sleepTime = ((int) (Math.random() * 3000));
+                } while (sleepTime < 1000);
+
+                try {
+                    super.sleep(sleepTime);
+                } catch (Exception e) {
+                }
+                
+
+                Arrive();
+
+                /* Executar a��o */
         }
     }
 }
