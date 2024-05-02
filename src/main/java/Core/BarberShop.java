@@ -35,27 +35,41 @@ public class BarberShop {
     }
 
     public ArrayList<Custumer> getChairList() {
-        return chairList;
+        synchronized(chairList){
+            return chairList;
+        }         
     }
 
     public void setChairList(ArrayList<Custumer> chairList) {
-        this.chairList = chairList;
+        synchronized(chairList){
+            this.chairList = chairList;
+        }    
     }
 
     public ArrayList<Barber> getBarberList() {
-        return this.barberList;
+        synchronized(barberList){
+            return this.barberList;
+        }        
     }
 
     public void setBarberList(ArrayList<Barber> barberList) {
-        this.barberList = barberList;
+        synchronized(barberList){
+            this.barberList = barberList;
+        }       
     }
 
     public ArrayList<Custumer> getCustumerList() {
-        return custumerList;
+        synchronized(custumerList){
+            return custumerList;
+        }  
+        
     }
 
     public void setCustumerList(ArrayList<Custumer> custumerList) {
-        this.custumerList = custumerList;
+        
+        synchronized(custumerList){
+            this.custumerList = custumerList;
+        }
     }
 
     public synchronized static boolean getPOS() {
@@ -63,6 +77,7 @@ public class BarberShop {
     }
 
     public synchronized static void setPOS(boolean pOS) {
+        
         POS = pOS;
     }
 
@@ -79,8 +94,11 @@ public class BarberShop {
         System.out.println("Cadeiras: " + chairList.size() + " Sofa: " + sofa.custumerList.size() + "| Espera em pe: " + custumerList.size());
     }
 
-    public synchronized void enter(Custumer c){
-        custumerList.add(c);
+    public void enter(Custumer c){
+        synchronized(custumerList){
+            custumerList.add(c);
+        }
+        
     }
     
     public synchronized void Payment(Barber b, Custumer c){
