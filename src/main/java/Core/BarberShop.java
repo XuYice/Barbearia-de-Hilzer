@@ -23,7 +23,6 @@ public class BarberShop {
         }else{
             return false;
         }
-        
     }
 
     public int getMaxTotalSeats() {
@@ -59,11 +58,11 @@ public class BarberShop {
         this.custumerList = custumerList;
     }
 
-    public static boolean getPOS() {
+    public synchronized static boolean getPOS() {
         return POS;
     }
 
-    public static void setPOS(boolean pOS) {
+    public synchronized static void setPOS(boolean pOS) {
         POS = pOS;
     }
 
@@ -94,7 +93,6 @@ public class BarberShop {
             this.setPOS(true);
 
             System.out.println("OK payment");
-            
         }else{
             System.out.println("POS not available");
         }*/
