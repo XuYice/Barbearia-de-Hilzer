@@ -48,9 +48,6 @@ public class Custumer extends Thread {
 
     public void run() {
         while (!exit) {
-<<<<<<< HEAD
-
-=======
                 int sleepTime;
 
                 do {
@@ -62,11 +59,7 @@ public class Custumer extends Thread {
                 } catch (Exception e) {
                 }
                 
-
                 Arrive();
-
-                /* Executar a��o */
->>>>>>> edb2b61dbf965cad7ad8d72aa41bca2e5c14a671
         }
     }
 }
