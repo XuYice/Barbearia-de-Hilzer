@@ -64,37 +64,37 @@ public class Barber extends Thread {
 
     public void run() {
         while (!exit) {
-            
             if (bS.getTotalCustumers() - bS.getChairList().size() > 0 && bS.getChairList().size() < 3) {
                 setSleeping(false);
-                
                 System.out.println(super.getName() + " acordou");
-                
-                bS.CutHair(this, bS.NextCustumer(this));            
-                
-                while (Working || RecivingPayment) {
-                    try {
-
-                        int sleepTime;
-
-                        do {
-                            sleepTime = ((int) (Math.random() * 2000));
-                        } while (sleepTime < 1000);
-
-                        Thread.sleep(sleepTime);
-
-                    } catch (Exception e) {
-                    }
+    
+                Custumer nextCustomer = bS.NextCustumer(this);
+                if (nextCustomer != null) {
+                    bS.CutHair(this, nextCustomer);
+                } else {
+                    System.out.println("Não há clientes para atender. " + super.getName() + " voltou a dormir.");
+                    setSleeping(true);
                 }
 
-            } else {
-                System.out.println(super.getName() + " esta dormindo");
                 try {
-                    setSleeping(true);
+                    int sleepTime;
+                    do {
+                        sleepTime = ((int) (Math.random() * 2000));
+                    } while (sleepTime < 1000);
+                    Thread.sleep(sleepTime);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+    
+            } else {
+                System.out.println(super.getName() + " está dormindo");
+                setSleeping(true);
+                try {
                     Thread.sleep(1000);
-                } catch (Exception e) {
-                };
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
-    }
+    }    
 }

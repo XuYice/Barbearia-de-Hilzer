@@ -35,13 +35,13 @@ public class BarberShop {
     }
 
     public ArrayList<Custumer> getChairList() {
-        synchronized (chairList) {
+        synchronized (this) {
             return chairList;
         }
     }
 
     public void setChairList(ArrayList<Custumer> chairList) {
-        synchronized (chairList) {
+        synchronized (this) {
             this.chairList = chairList;
         }
     }
@@ -82,17 +82,18 @@ public class BarberShop {
     }
 
     public synchronized void Relocate() {
-        sofa.custumerList.trimToSize();
-
-        while ((sofa.custumerList.size() < 4) && (!custumerList.isEmpty())) {
-            sofa.custumerList.add(custumerList.get(0));
-            custumerList.remove(0);
-
-            custumerList.trimToSize();
+        // Move clientes da lista de espera para o sofá
+        while (sofa.custumerList.size() < 4 && !custumerList.isEmpty()) {
+            sofa.custumerList.add(custumerList.remove(0));
         }
-
-        System.out.println("Cadeiras: " + chairList.size() + " Sofa: " + sofa.custumerList.size() + "| Espera em pe: " + custumerList.size());
+    
+        // Atualiza a quantidade de clientes esperando de pé
+        int standingCustomers = custumerList.size();
+    
+        // Imprime o status atual
+        System.out.println("Cadeiras: " + chairList.size() + " Sofa: " + sofa.custumerList.size() + "| Espera em pé: " + standingCustomers);
     }
+    
 
     public void enter(Custumer c) {
         synchronized (custumerList) {
@@ -109,21 +110,28 @@ public class BarberShop {
     }
 
     public synchronized Custumer NextCustumer(Barber b) {
-        Custumer c = sofa.custumerList.get(0);  
-        getChairList().add(sofa.custumerList.get(0));
-        sofa.custumerList.remove(0);
-        Relocate();
-        
-        return c;
+        if (!sofa.custumerList.isEmpty()) {
+            Custumer c = sofa.custumerList.get(0);  
+            getChairList().add(c);
+            sofa.custumerList.remove(0);
+            Relocate();
+            return c;
+        } else {
+            return null;
+        }
     }
     
+    
     public synchronized void CutHair(Barber b, Custumer c){
-        b.setWorking(true);
-        b.ChangeStatus();
-        System.out.println("Barbeiro " + b.getName() + " corta cabelo de " + c.getName());
-          
+        if (c != null) {
+            b.setWorking(true);
+            b.ChangeStatus();
+            System.out.println("Barbeiro " + b.getName() + " corta cabelo de " + c.getName());
+            Payment(b);
+            c.ConfirmPayment(c); 
+        } else {
+            System.out.println("Não há clientes para cortar o cabelo neste momento.");
+        }
     }
-
-    public void Verify() {
-    }
+    
 }

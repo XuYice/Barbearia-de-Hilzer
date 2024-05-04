@@ -36,7 +36,7 @@ public class Custumer extends Thread {
     public void ConfirmPayment(Custumer c) {
         if (!c.getPayment()) {
             c.setPayment(true);
-            /*  System.out.println(); para sinalizar pagamento*/
+            System.out.println("Pagamento confirmado para o cliente " + c.getName());
         }
     }
 
