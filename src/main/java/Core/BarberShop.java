@@ -91,7 +91,7 @@ public class BarberShop {
         int standingCustomers = custumerList.size();
     
         // Imprime o status atual
-        System.out.println("Cadeiras: " + chairList.size() + " Sofa: " + sofa.custumerList.size() + "| Espera em pé: " + standingCustomers);
+        System.out.println("Cadeiras: " + chairList.size() + " Sofa: " + sofa.custumerList.size() + "| Espera em pe: " + standingCustomers);
     }
     
 
@@ -130,7 +130,7 @@ public class BarberShop {
             Payment(b);
             c.ConfirmPayment(c); 
         } else {
-            System.out.println("Não há clientes para cortar o cabelo neste momento.");
+            System.out.println("Nao ha clientes para cortar o cabelo neste momento.");
         }
     }
     

@@ -72,7 +72,7 @@ public class Barber extends Thread {
                 if (nextCustomer != null) {
                     bS.CutHair(this, nextCustomer);
                 } else {
-                    System.out.println("Não há clientes para atender. " + super.getName() + " voltou a dormir.");
+                    System.out.println("Nao ha clientes para atender. " + super.getName() + " voltou a dormir.");
                     setSleeping(true);
                 }
 
@@ -87,7 +87,7 @@ public class Barber extends Thread {
                 }
     
             } else {
-                System.out.println(super.getName() + " está dormindo");
+                System.out.println(super.getName() + " esta dormindo");
                 setSleeping(true);
                 try {
                     Thread.sleep(1000);

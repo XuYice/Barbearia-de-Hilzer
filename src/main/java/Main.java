@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int maxClients = 10;
+        int maxClients = 20;
         int clients = 0;
 
         BarberShop bS = new BarberShop();
