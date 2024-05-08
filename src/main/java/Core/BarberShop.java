@@ -90,6 +90,9 @@ public class BarberShop {
 
         // Atualiza a quantidade de clientes esperando de pé
         int standingCustomers = custumerList.size();
+        
+        sofa.custumerList.trimToSize();
+        chairList.trimToSize();
 
         // Imprime o status atual
         System.out.println("Cadeiras: " + chairList.size() + " Sofa: " + sofa.custumerList.size() + "| Espera em pe: " + standingCustomers);
@@ -123,11 +126,7 @@ public class BarberShop {
 
     public synchronized void CutHair(Barber b, Custumer c) {
         if (c != null) {
-            b.setWorking(true);
-            b.ChangeStatus();
             System.out.println("Barbeiro " + b.getName() + " corta cabelo de " + c.getName());
-            Payment(b);
-            c.ConfirmPayment(c);
         } else {
             System.out.println("Nao ha clientes para cortar o cabelo neste momento.");
         }

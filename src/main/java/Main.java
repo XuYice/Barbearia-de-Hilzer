@@ -6,8 +6,6 @@ import java.util.ArrayList;
 
 public class Main {
 
-    private static final Object lock = new Object();
-
     public static Custumer generateClient(String n, BarberShop b) {
 
         Custumer newCustumer = new Custumer(n, b);
@@ -37,23 +35,21 @@ public class Main {
         b0.start();
         b1.start();
         b2.start();
+
+        //b0.join();
+        //b1.join();
+        //b2.join();
         
-        b0.join();
-        b1.join();
-        b2.join();
+        while (clients <= maxClients) {
+            Custumer newCustumer = generateClient(Integer.toString(clients), bS);
+            newCustumer.start();
 
-        synchronized (lock) {
-            while (clients <= maxClients) {
-                Custumer newCustumer = generateClient(Integer.toString(clients), bS);
-                newCustumer.start();
-
-                try {
-                    newCustumer.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                clients++;
+            try {
+                newCustumer.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+            clients++;
         }
 
         b0.setExit(true);

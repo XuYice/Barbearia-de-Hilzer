@@ -11,10 +11,14 @@ public class Barber extends Thread {
 
     boolean exit;
     boolean paymentPending;
+    Custumer nextCustomer;
 
     public Barber(String threadName, BarberShop b) {
         super(threadName);
         bS = b;
+        setWorking(true);
+        setSleeping(false);
+        setRecivingPayment(false);
     }
 
     public void setExit(boolean exit) {
@@ -92,7 +96,7 @@ public class Barber extends Thread {
             if (bS.getTotalCustumers() - bS.getChairList().size() > 0 && bS.getChairList().size() < 3) {
 
                 if (getWorking()) {
-                    Custumer nextCustomer = bS.NextCustumer(this);
+                    nextCustomer = bS.NextCustumer(this);
                     if (nextCustomer != null) {
                         bS.CutHair(this, nextCustomer);
                         waitTime(2000);
@@ -138,6 +142,9 @@ public class Barber extends Thread {
                     setRecivingPayment(false);
                     setSleeping(true);
                     setWorking(false);
+                    bS.Payment(this);
+                    nextCustomer.ConfirmPayment();
+                    nextCustomer = null;
                     bS.setPOS("Free");
                 }
 
@@ -152,30 +159,14 @@ public class Barber extends Thread {
                     setRecivingPayment(false);
                     setSleeping(true);
                     setWorking(false);
+                    bS.Payment(this);
+                    nextCustomer.ConfirmPayment();
+                    nextCustomer = null;
                     bS.setPOS("Free");
                 }
             }
-
-            /*
-            if (bS.getTotalCustumers() - bS.getChairList().size() > 0 && bS.getChairList().size() < 3) {;;
-                setSleeping(false);
-                System.out.println(super.getName() + " acordou");
-
-                Custumer nextCustomer = bS.NextCustumer(this);
-                if (nextCustomer != null) {
-                    bS.CutHair(this, nextCustomer);
-                    waitTime(2000);
-                } else {
-                    System.out.println("Nao ha clientes para atender. " + super.getName() + " voltou a dormir.");
-                    setSleeping(true);
-                }
-
-            } else {
-                System.out.println(super.getName() + " esta dormindo");
-                setSleeping(true);
-
-                waitTime(1000);
-            } */
+            
+            waitTime(2000);
         }
     }
 }
