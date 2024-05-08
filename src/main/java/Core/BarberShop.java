@@ -11,7 +11,7 @@ public class BarberShop {
     ArrayList<Custumer> chairList;
     ArrayList<Barber> barberList;
     ArrayList<Custumer> custumerList;
-    public boolean POS;
+    public String POS;
     int maxTotalSeats = 20;
 
     public synchronized boolean avaliableSpace() {
@@ -72,13 +72,14 @@ public class BarberShop {
         }
     }
 
-    public synchronized boolean getPOS() {
+    public synchronized String getPOS() {
         return POS;
     }
 
-    public synchronized void setPOS(boolean pOS) {
-
-        POS = pOS;
+    public void setPOS(String pOS) {
+        synchronized (POS) {
+            POS = pOS;
+        }
     }
 
     public synchronized void Relocate() {
@@ -86,14 +87,13 @@ public class BarberShop {
         while (sofa.custumerList.size() < 4 && !custumerList.isEmpty()) {
             sofa.custumerList.add(custumerList.remove(0));
         }
-    
+
         // Atualiza a quantidade de clientes esperando de pé
         int standingCustomers = custumerList.size();
-    
+
         // Imprime o status atual
         System.out.println("Cadeiras: " + chairList.size() + " Sofa: " + sofa.custumerList.size() + "| Espera em pe: " + standingCustomers);
     }
-    
 
     public void enter(Custumer c) {
         synchronized (custumerList) {
@@ -111,7 +111,7 @@ public class BarberShop {
 
     public synchronized Custumer NextCustumer(Barber b) {
         if (!sofa.custumerList.isEmpty()) {
-            Custumer c = sofa.custumerList.get(0);  
+            Custumer c = sofa.custumerList.get(0);
             getChairList().add(c);
             sofa.custumerList.remove(0);
             Relocate();
@@ -120,18 +120,17 @@ public class BarberShop {
             return null;
         }
     }
-    
-    
-    public synchronized void CutHair(Barber b, Custumer c){
+
+    public synchronized void CutHair(Barber b, Custumer c) {
         if (c != null) {
             b.setWorking(true);
             b.ChangeStatus();
             System.out.println("Barbeiro " + b.getName() + " corta cabelo de " + c.getName());
             Payment(b);
-            c.ConfirmPayment(c); 
+            c.ConfirmPayment(c);
         } else {
             System.out.println("Nao ha clientes para cortar o cabelo neste momento.");
         }
     }
-    
+
 }

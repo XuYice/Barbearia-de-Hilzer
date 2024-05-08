@@ -14,7 +14,7 @@ public class Main {
         return newCustumer;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         int maxClients = 20;
         int clients = 0;
@@ -37,6 +37,10 @@ public class Main {
         b0.start();
         b1.start();
         b2.start();
+        
+        b0.join();
+        b1.join();
+        b2.join();
 
         synchronized (lock) {
             while (clients <= maxClients) {
