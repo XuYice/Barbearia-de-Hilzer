@@ -36,19 +36,18 @@ public class Main {
         b1.start();
         b2.start();
 
-        //b0.join();
-        //b1.join();
-        //b2.join();
-        
         while (clients <= maxClients) {
             Custumer newCustumer = generateClient(Integer.toString(clients), bS);
             newCustumer.start();
+            System.out.println("Main - Novo cliente - " + newCustumer.getName());
 
             try {
                 newCustumer.join();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
+            Thread.sleep(2000);
             clients++;
         }
 

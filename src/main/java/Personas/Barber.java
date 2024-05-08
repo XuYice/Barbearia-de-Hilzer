@@ -103,16 +103,18 @@ public class Barber extends Thread {
                         paymentPending = true;
 
                         if (bS.POS == "Free") {
+                            System.out.println("Barber - Entrou no If");
                             setRecivingPayment(true);
                             setSleeping(false);
                             setWorking(false);
                         } else {
+                            System.out.println("Barber - Entrou no Else");
                             setRecivingPayment(false);
                             setSleeping(true);
                             setWorking(false);
                         }
                     } else {
-                        System.out.println("Nao ha clientes para atender. " + super.getName());
+                        System.out.println("Barber - Nao ha clientes para atender. " + super.getName());
 
                         setRecivingPayment(false);
                         setSleeping(true);
@@ -122,17 +124,17 @@ public class Barber extends Thread {
                 } else if (getSleeping()) {
                     if (paymentPending && bS.POS == "Free") {
                         bS.setPOS("Busy");
-                        System.out.println(super.getName() + " foi receber pagamento");
+                        System.out.println("Barber - " + super.getName() + " foi receber pagamento");
                         setRecivingPayment(true);
                         setSleeping(false);
                         setWorking(false);
                     } else if (paymentPending && bS.POS == "Busy") {
-                        System.out.println(super.getName() + " POS ocupado - aguardando...");
+                        System.out.println("Barber - " + super.getName() + " POS ocupado - aguardando...");
                         setRecivingPayment(false);
                         setSleeping(true);
                         setWorking(false);
                     } else if (!paymentPending) {
-                        System.out.println(super.getName() + " acordou");
+                        System.out.println("Barber - " + super.getName() + " acordou");
                         setRecivingPayment(false);
                         setSleeping(false);
                         setWorking(true);
@@ -144,13 +146,15 @@ public class Barber extends Thread {
                     setWorking(false);
                     bS.Payment(this);
                     nextCustomer.ConfirmPayment();
+                    System.out.println("--------------- Payment 1 " + nextCustomer.getName());
                     nextCustomer = null;
                     bS.setPOS("Free");
+                    paymentPending = false;
                 }
 
             } else {
                 if (getSleeping()) {
-                    System.out.println("Nao ha clientes para atender. " + super.getName());
+                    System.out.println("Barber - Nao ha clientes para atender. " + super.getName());
                     setRecivingPayment(false);
                     setSleeping(true);
                     setWorking(false);
@@ -161,11 +165,13 @@ public class Barber extends Thread {
                     setWorking(false);
                     bS.Payment(this);
                     nextCustomer.ConfirmPayment();
+                    System.out.println("--------------- Payment 2 " + nextCustomer.getName());
                     nextCustomer = null;
                     bS.setPOS("Free");
+                    paymentPending = false;
                 }
             }
-            
+
             waitTime(2000);
         }
     }

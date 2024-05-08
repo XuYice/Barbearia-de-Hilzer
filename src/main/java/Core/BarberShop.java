@@ -11,7 +11,7 @@ public class BarberShop {
     ArrayList<Custumer> chairList;
     ArrayList<Barber> barberList;
     ArrayList<Custumer> custumerList;
-    public String POS;
+    public String POS = "Free";
     int maxTotalSeats = 20;
 
     public synchronized boolean avaliableSpace() {
@@ -34,10 +34,8 @@ public class BarberShop {
         return cl.size() + sofa.custumerList.size() + chairList.size();
     }
 
-    public ArrayList<Custumer> getChairList() {
-        synchronized (this) {
-            return chairList;
-        }
+    public synchronized ArrayList<Custumer> getChairList() {
+        return chairList;
     }
 
     public void setChairList(ArrayList<Custumer> chairList) {
@@ -58,28 +56,21 @@ public class BarberShop {
         }
     }
 
-    public ArrayList<Custumer> getCustumerList() {
-        synchronized (custumerList) {
+    public synchronized ArrayList<Custumer> getCustumerList() {
             return custumerList;
-        }
 
     }
 
-    public void setCustumerList(ArrayList<Custumer> custumerList) {
-
-        synchronized (custumerList) {
-            this.custumerList = custumerList;
-        }
+    public synchronized void setCustumerList(ArrayList<Custumer> custumerList) {
+        this.custumerList = custumerList;
     }
 
     public synchronized String getPOS() {
         return POS;
     }
 
-    public void setPOS(String pOS) {
-        synchronized (POS) {
-            POS = pOS;
-        }
+    public synchronized void setPOS(String pOS) {
+        POS = pOS;
     }
 
     public synchronized void Relocate() {
@@ -95,14 +86,11 @@ public class BarberShop {
         chairList.trimToSize();
 
         // Imprime o status atual
-        System.out.println("Cadeiras: " + chairList.size() + " Sofa: " + sofa.custumerList.size() + "| Espera em pe: " + standingCustomers);
+        System.out.println("BarberShop - Cadeiras: " + chairList.size() + " Sofa: " + sofa.custumerList.size() + "| Espera em pe: " + standingCustomers);
     }
 
-    public void enter(Custumer c) {
-        synchronized (custumerList) {
-            custumerList.add(c);
-        }
-
+    public synchronized void enter(Custumer c) {
+        custumerList.add(c);
     }
 
     public synchronized void Payment(Barber b) {
@@ -116,8 +104,10 @@ public class BarberShop {
         if (!sofa.custumerList.isEmpty()) {
             Custumer c = sofa.custumerList.get(0);
             getChairList().add(c);
+            System.out.println("BarberShop - Cliente do Sofa - " + sofa.custumerList.get(0).getName());
             sofa.custumerList.remove(0);
             Relocate();
+
             return c;
         } else {
             return null;
@@ -126,9 +116,9 @@ public class BarberShop {
 
     public synchronized void CutHair(Barber b, Custumer c) {
         if (c != null) {
-            System.out.println("Barbeiro " + b.getName() + " corta cabelo de " + c.getName());
+            System.out.println("BarberShop - Barbeiro " + b.getName() + " corta cabelo de " + c.getName());
         } else {
-            System.out.println("Nao ha clientes para cortar o cabelo neste momento.");
+            System.out.println("BarberShop - Nao ha clientes para cortar o cabelo neste momento.");
         }
     }
 

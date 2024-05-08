@@ -7,10 +7,12 @@ public class Custumer extends Thread {
     boolean payment;
     BarberShop bS;
     boolean exit;
+    boolean assing;
 
     public Custumer(String threadName, BarberShop b) {
         super(threadName);
         this.bS = b;
+        this.assing = false;
     }
 
     public void setExit(boolean exit) {
@@ -26,9 +28,8 @@ public class Custumer extends Thread {
         if (bS.avaliableSpace()) {
             bS.enter(this);
             bS.Relocate();
-            System.out.println("Novo cliente chegou");
         } else {
-            System.out.println("Sem espaco disponivel, cliente nao entra");
+            System.out.println("Custumer - Sem espaco disponivel, cliente nao entra");
             setExit(true);
         }
     }
@@ -36,7 +37,7 @@ public class Custumer extends Thread {
     public void ConfirmPayment() {
         if (!getPayment()) {
             setPayment(true);
-            System.out.println("Pagamento confirmado para o cliente " + getName());
+            System.out.println("Custumer - Pagamento confirmado para o cliente " + getName());
         }
     }
 
@@ -49,19 +50,10 @@ public class Custumer extends Thread {
     }
 
     public void run() {
-        while (!exit) {
-            int sleepTime;
-
-            do {
-                sleepTime = ((int) (Math.random() * 3000));
-            } while (sleepTime < 1000);
-
-            try {
-                super.sleep(sleepTime);
-            } catch (Exception e) {
-            }
-
+        if(!assing){
             Arrive();
+            assing = true;  
+            System.out.println("Custumer - Novo cliente chegou");
         }
     }
 }
