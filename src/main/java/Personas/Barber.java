@@ -91,7 +91,7 @@ public class Barber extends Thread {
     }
 
     public void run() {
-        while (!exit) {
+        while ((bS.clients <= bS.maxClients) || (bS.getTotalCustumers() > 0)) {
 
             if (bS.getTotalCustumers() - bS.getChairList().size() > 0 && bS.getChairList().size() < 3) {
 

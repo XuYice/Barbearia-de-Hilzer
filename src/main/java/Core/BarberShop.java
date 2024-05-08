@@ -6,8 +6,10 @@ import Resources.Sofa;
 import java.util.ArrayList;
 
 public class BarberShop {
+    public int maxClients = 30;
+    public int clients = 0;
 
-    Sofa sofa = new Sofa();
+    public Sofa sofa = new Sofa();
     ArrayList<Custumer> chairList;
     ArrayList<Barber> barberList;
     ArrayList<Custumer> custumerList;

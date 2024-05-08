@@ -14,9 +14,6 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
-        int maxClients = 20;
-        int clients = 0;
-
         BarberShop bS = new BarberShop();
         ArrayList<Barber> barberList = new ArrayList<Barber>();
         bS.setBarberList(barberList);
@@ -35,9 +32,9 @@ public class Main {
         b0.start();
         b1.start();
         b2.start();
-
-        while (clients <= maxClients) {
-            Custumer newCustumer = generateClient(Integer.toString(clients), bS);
+        
+        while (bS.clients <= bS.maxClients) {
+            Custumer newCustumer = generateClient(Integer.toString(bS.clients), bS);
             newCustumer.start();
             System.out.println("Main - Novo cliente - " + newCustumer.getName());
 
@@ -47,10 +44,14 @@ public class Main {
                 e.printStackTrace();
             }
 
-            Thread.sleep(2000);
-            clients++;
+            Thread.sleep(500);
+            bS.clients++;
         }
 
+        b0.join();
+        b1.join();
+        b2.join();
+        
         b0.setExit(true);
         b1.setExit(true);
         b2.setExit(true);
